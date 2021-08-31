@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Icon(
                       Icons.add,
-                      size: 77.0,
+                      size: 70.0,
                       color: Colors.white,
                     ),
                     Text(
