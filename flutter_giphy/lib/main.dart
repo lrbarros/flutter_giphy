@@ -14,6 +14,7 @@ void main() {
           focusedBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           hintStyle: TextStyle(color: Colors.white),
+
         )),
   ));
 }

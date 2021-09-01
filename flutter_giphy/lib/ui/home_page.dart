@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_giphy/ui/gif_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:share/share.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,14 +27,6 @@ class _HomePageState extends State<HomePage> {
           "https://api.giphy.com/v1/gifs/search?api_key=3GdWDP2FMa6khjK657kRMpWUed4xGvv5&q=$_search&limit=19&offset=$_offset&rating=g&lang=pt"));
 
     return json.decode(response.body);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getGifs().then((map) {
-      print(map.toString());
-    });
   }
 
   @override
@@ -120,6 +113,9 @@ class _HomePageState extends State<HomePage> {
               onTap: (){
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => GifPage(snapshot.data["data"][index]), ));
+              },
+              onLongPress: (){
+                  Share.share(snapshot.data["data"][index]["images"]["fixed_height"]["url"]);
               },
             );
           } else {
